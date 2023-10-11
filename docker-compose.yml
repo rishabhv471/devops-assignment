@@ -1,0 +1,31 @@
+version: '3'
+
+
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "80:80"
+    environment:
+      WORDPRESS_DB_HOST: f_database
+      WORDPRESS_DB_USER: rishabhv471
+      WORDPRESS_DB_PASSWORD: rishabhv471@1234
+      WORDPRESS_DB_NAME: rishabhv471db
+    volumes:
+      - wordpress_data: /var/www/html
+
+  db:
+    image: mysql:latest
+    environment: 
+      MYSQL_ROOT_PASSWORD: root@123
+      MYSQL_DATABASE: rishabhv471db
+      MYSQL_USER: rishabhv471
+      MYSQL_PASSWORD: rishabhv471@1234
+
+    volumes:
+      - db_data: /var/lib/mysql
+
+
+volumes:
+  wordpress_data:
+  db_data:
